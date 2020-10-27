@@ -1664,8 +1664,14 @@ main .row .card-text {
   margin-top: 2%;
   margin-bottom: 5%;
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 20px;
   text-justify: auto;
+}
+
+@media (min-width: 768px) {
+  .program-card .card-body .program-card-title {
+    font-size: 50px;
+  }
 }
 
 .program-card .card-body .card-text {
