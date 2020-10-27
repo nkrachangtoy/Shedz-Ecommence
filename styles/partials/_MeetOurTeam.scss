@@ -1,54 +1,29 @@
-/*
 .team {
-  margin-top: -100px;
-}
-*/
-.team_jumbotron {
- // margin-top: -100px;
-  background-image: url(../images/team1.jpg);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  h1,
-  p {
-    color: white;
+  &__jumbotron {
+    background-image: linear-gradient($black-50-opacity),
+      url(../images/team1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 720px;
+    @include flex-center-column;
   }
-  @include mobile {
-    height: 80vh;
+  &__jumbotron-header {
+    @include header(64px, 60px);
+    color: $white;
   }
-
-  @include tablet {
-    height: 120vh;
+  &__jumbotron-text-wrapper {
+    @include wrapper;
+    @include space-out;
   }
-  @include desktop {
-    height: 150vh;
+  &__text {
+    @include subheader(24px, 24px);
+    color: $white;
   }
 }
-
-
-
-/*
-.team_banner {
-  position: relative;
-  background-image: url(../images/team1.jpg);
-  height: 120vh;
-  background-size: cover;
-
-  @include mobile {
-    height: 80vh;
-  }
-
-  @include tablet {
-    height: 120vh;
-  }
-  @include desktop {
-    height: 150vh;
-  }
-}
-*/
 .team-cover {
   position: absolute;
- // height: 100%;
+
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
@@ -65,22 +40,14 @@
 }
 
 .team_content {
-  //float: none;
-  //margin: auto;
   position: absolute;
   text-align: center;
-  // justify-content: center;
-   align-items: center;
-
-  /*top:30%;
-    left:30%;
-    transform: translate(-50%, -50%)*/
-
-  //margin: 100px;
-
+  align-items: center;
+  color: white;
+  z-index: 2;
+  text-align: center;
   .btn-outline-light {
     padding: 20px;
-
     margin-top: 80px;
 
     @include mobile {
@@ -95,10 +62,6 @@
       font-size: 30px;
     }
   }
-  /*font-size:5rem;*/
-  color: white;
-  z-index: 2;
-  text-align: center;
 }
 
 .team_info {
@@ -108,7 +71,6 @@
   }
 }
 .team_title {
-  
   @include mobile {
     font-size: 1.5rem;
   }
@@ -174,112 +136,69 @@
   }
 }
 
-main {
+.team-wrapper {
   @include wrapper;
-
-  .row {
-    //@include flex-center-column;
-    @include space-out;
-    //padding: 50px;
-    //width: 100%;
-    //height: 600px;
-
-    .card-img {
-      margin-top: 100px;
-      width: 400px;
-      height: 500px;
-      border-radius: 10%;
-
-      @include mobile {
-        width: 300px;
-        height: 400px;
-        align-items: center;
-      }
-
-      @include tablet {
-        width: 300px;
-        height: 350px;
-      }
-
-      @include desktop {
-        width: 400px;
-        height: 500px;
-      }
-    }
-
-    .card-body {
-      //padding-left: 30px;
-      margin-top: 20px;
-      margin-left: -200px;
-      @include mobile {
-        margin-left: 0px;
-      }
-
-      @include tablet {
-        //margin-left: -100px;
-      }
-
-      @include desktop {
-        // margin-left: -200px;
-      }
-    }
-
-    .card-title {
-      font-family: "Roboto-Demi";
-      padding: 20px;
-      @include mobile {
-        font-size: 1em;
-        text-align: center;
-      }
-
-      @include tablet {
-        font-size: 1.5em;
-        text-align: left;
-      }
-
-      @include desktop {
-        font-size: 2.5em;
-        text-align: left;
-      }
-    }
-
-    .card-text {
-      font-family: "OpenSan-Regular";
-    }
-  }
 }
 
-/*
-  .exercise1 {
-    display: flex;
-    padding: 5%;
-  
-    > img {
-      width: 40%;
-      margin-right: 4%;
+.row {
+  @include space-out;
+  .card-img {
+    margin-top: 100px;
+    width: 400px;
+    height: 500px;
+    border-radius: 10%;
+
+    @include mobile {
+      width: 300px;
+      height: 400px;
+      align-items: center;
     }
-  
-    p {
-      line-height: 1.4;
-      text-align: justify;
+
+    @include tablet {
+      width: 300px;
+      height: 350px;
+    }
+
+    @include desktop {
+      width: 400px;
+      height: 500px;
     }
   }
-  
-  .exercise1-grid {
-    display: grid;
+
+  .card-body {
+    margin-top: 20px;
+    margin-left: -200px;
+    @include mobile {
+      margin-left: 0px;
+    }
+
+    @include tablet {
+    }
+
+    @include desktop {
+    }
   }
-  
-  .exercise2, .exercise3, .exercise4, .exercise5, .exercise6 {
-    display: flex;
-    padding: 5%;
-  
-    > img {
-      width: 40%;
-      margin-right: 4%;
+
+  .card-title {
+    font-family: "Roboto-Demi";
+    padding: 20px;
+    @include mobile {
+      font-size: 1em;
+      text-align: center;
     }
-  
-    p {
-      line-height: 1.4;
-      text-align: justify;
+
+    @include tablet {
+      font-size: 1.5em;
+      text-align: left;
     }
-  }*/
+
+    @include desktop {
+      font-size: 2.5em;
+      text-align: left;
+    }
+  }
+
+  .card-text {
+    font-family: "OpenSan-Regular";
+  }
+}

@@ -793,6 +793,7 @@ figure.snip1321.hover:after {
 }
 
 .cart-item {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 40% auto 40%;
@@ -810,6 +811,7 @@ figure.snip1321.hover:after {
   margin: 1.25%;
   -webkit-box-shadow: 2px 2px 2px black;
           box-shadow: 2px 2px 2px black;
+  overflow: hidden;
 }
 
 .cart-item:hover {
@@ -845,8 +847,12 @@ figure.snip1321.hover:after {
 }
 
 .cart-item__remove {
-  width: 100%;
-  margin: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .cart-item__amount {
@@ -857,9 +863,12 @@ figure.snip1321.hover:after {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   width: 100%;
 }
 
@@ -869,13 +878,15 @@ figure.snip1321.hover:after {
 }
 
 .cart-item__remove-button {
-  font-size: 12px;
-  height: 32px;
+  font-family: "OpenSan-Regular";
+  font-size: 14px;
+  line-height: 14px;
   width: 100%;
-  text-align: left;
-  border-radius: 5%;
+  height: 32px;
+  text-align: end;
+  border-top-right-radius: 2%;
   border: none;
-  padding: 0px;
+  padding-right: 1rem;
   background-image: radial-gradient(white, #e8eddf);
   cursor: pointer;
 }
@@ -902,7 +913,6 @@ figure.snip1321.hover:after {
 }
 
 .cart-item__functions {
-  justify-self: end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -910,31 +920,10 @@ figure.snip1321.hover:after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  width: 100%;
-}
-
-@media (min-width: 320px) {
-  .cart-item__functions {
-    width: 90%;
-  }
-}
-
-@media (min-width: 768px) {
-  .cart-item__functions {
-    width: 70%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .cart-item__functions {
-    width: 50%;
-  }
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 8px;
 }
 
 .cart-item a .fas {
@@ -952,18 +941,31 @@ figure.snip1321.hover:after {
 }
 
 .cart-item__price {
-  font-size: 18px;
+  font-family: "Roboto-Demi";
+  font-size: 16px;
+  line-height: 16px;
+}
+
+@media (min-width: 768px) {
+  .cart-item__price {
+    font-family: "Roboto-Demi";
+    font-size: 18px;
+    line-height: 16px;
+  }
 }
 
 .cart-item__item-total {
-  font-size: 32px;
-  font-weight: bold;
-  -ms-grid-column-align: right;
-      justify-self: right;
+  font-family: "Roboto-Demi";
+  font-size: 24px;
+  line-height: 24px;
   color: #62929f;
-  padding: 15px;
-  position: absolute;
-  offset: 50px;
+  text-align: end;
+}
+
+.cart-item__quantity__value {
+  font-family: "Roboto-Demi";
+  font-size: 14px;
+  line-height: 14px;
 }
 
 .cart-summary {
@@ -993,13 +995,32 @@ figure.snip1321.hover:after {
 
 .cart-summary__count__value {
   color: black;
-  font-weight: bold;
+  font-family: "Roboto-Demi";
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@media (min-width: 768px) {
+  .cart-summary__count__value {
+    font-family: "Roboto-Demi";
+    font-size: 28px;
+    line-height: 24px;
+  }
 }
 
 .cart-summary__subtotal__value {
   color: #62929f;
-  font-size: 42px;
-  font-weight: bold;
+  font-family: "Roboto-Demi";
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@media (min-width: 768px) {
+  .cart-summary__subtotal__value {
+    font-family: "Roboto-Demi";
+    font-size: 28px;
+    line-height: 24px;
+  }
 }
 
 .cart-summary__checkout-button {
@@ -1015,7 +1036,6 @@ figure.snip1321.hover:after {
 }
 
 .checkout {
-  height: 100vh;
   padding-top: 10%;
 }
 
@@ -1346,60 +1366,49 @@ figure.snip1321.hover:after {
   }
 }
 
-/*
-.team {
-  margin-top: -100px;
-}
-*/
-.team_jumbotron {
-  background-image: url(../images/team1.jpg);
+.team__jumbotron {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(50, 50, 50, 0.5))), url(../images/team1.jpg);
+  background-image: linear-gradient(rgba(50, 50, 50, 0.5)), url(../images/team1.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  height: 720px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.team_jumbotron h1,
-.team_jumbotron p {
-  color: white;
+.team__jumbotron-header {
+  font-family: "Roboto-Bold";
+  font-size: 64px;
+  line-height: 60px;
+  color: #fafafa;
 }
 
-@media (min-width: 320px) {
-  .team_jumbotron {
-    height: 80vh;
-  }
+.team__jumbotron-text-wrapper {
+  margin: 0 auto;
+  width: 80%;
+  margin: 1rem;
+  padding: 1rem;
 }
 
-@media (min-width: 768px) {
-  .team_jumbotron {
-    height: 120vh;
-  }
+.team__text {
+  font-family: "Roboto-Demi";
+  font-size: 24px;
+  line-height: 24px;
+  color: #fafafa;
 }
 
-@media (min-width: 1024px) {
-  .team_jumbotron {
-    height: 150vh;
-  }
-}
-
-/*
-.team_banner {
-  position: relative;
-  background-image: url(../images/team1.jpg);
-  height: 120vh;
-  background-size: cover;
-
-  @include mobile {
-    height: 80vh;
-  }
-
-  @include tablet {
-    height: 120vh;
-  }
-  @include desktop {
-    height: 150vh;
-  }
-}
-*/
 .team-cover {
   position: absolute;
   width: 100%;
@@ -1431,10 +1440,6 @@ figure.snip1321.hover:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*top:30%;
-    left:30%;
-    transform: translate(-50%, -50%)*/
-  /*font-size:5rem;*/
   color: white;
   z-index: 2;
   text-align: center;
@@ -1562,17 +1567,17 @@ figure.snip1321.hover:after {
   }
 }
 
-main {
+.team-wrapper {
   margin: 0 auto;
   width: 80%;
 }
 
-main .row {
+.row {
   margin: 1rem;
   padding: 1rem;
 }
 
-main .row .card-img {
+.row .card-img {
   margin-top: 100px;
   width: 400px;
   height: 500px;
@@ -1580,7 +1585,7 @@ main .row .card-img {
 }
 
 @media (min-width: 320px) {
-  main .row .card-img {
+  .row .card-img {
     width: 300px;
     height: 400px;
     -webkit-box-align: center;
@@ -1590,94 +1595,60 @@ main .row .card-img {
 }
 
 @media (min-width: 768px) {
-  main .row .card-img {
+  .row .card-img {
     width: 300px;
     height: 350px;
   }
 }
 
 @media (min-width: 1024px) {
-  main .row .card-img {
+  .row .card-img {
     width: 400px;
     height: 500px;
   }
 }
 
-main .row .card-body {
+.row .card-body {
   margin-top: 20px;
   margin-left: -200px;
 }
 
 @media (min-width: 320px) {
-  main .row .card-body {
+  .row .card-body {
     margin-left: 0px;
   }
 }
 
-main .row .card-title {
+.row .card-title {
   font-family: "Roboto-Demi";
   padding: 20px;
 }
 
 @media (min-width: 320px) {
-  main .row .card-title {
+  .row .card-title {
     font-size: 1em;
     text-align: center;
   }
 }
 
 @media (min-width: 768px) {
-  main .row .card-title {
+  .row .card-title {
     font-size: 1.5em;
     text-align: left;
   }
 }
 
 @media (min-width: 1024px) {
-  main .row .card-title {
+  .row .card-title {
     font-size: 2.5em;
     text-align: left;
   }
 }
 
-main .row .card-text {
+.row .card-text {
   font-family: "OpenSan-Regular";
 }
 
-/*
-  .exercise1 {
-    display: flex;
-    padding: 5%;
-  
-    > img {
-      width: 40%;
-      margin-right: 4%;
-    }
-  
-    p {
-      line-height: 1.4;
-      text-align: justify;
-    }
-  }
-  
-  .exercise1-grid {
-    display: grid;
-  }
-  
-  .exercise2, .exercise3, .exercise4, .exercise5, .exercise6 {
-    display: flex;
-    padding: 5%;
-  
-    > img {
-      width: 40%;
-      margin-right: 4%;
-    }
-  
-    p {
-      line-height: 1.4;
-      text-align: justify;
-    }
-  }*/
 .program_jumbotron {
   background-image: url("/images/cropImg/yoga.jpg");
   background-size: cover;
