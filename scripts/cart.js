@@ -1,31 +1,30 @@
 
 let items = [ // our programs
-    {  
+    {
         name: 'Muay Thai',
         tag: 'muaythai',
         price: 12,
         inCart: 0,
-        image_path: '/images/landing/program-muaythai.jpg'
+        image_path: '/images/landing/program-muaythai.jpg',
+        id: 0
     },
     {
-      
         name: 'Yoga',
         tag: 'yoga',
         price: 8,
         inCart: 0,
-        image_path: '/images/landing/program-yoga.jpg'
+        image_path: '/images/landing/program-yoga.jpg',
+        id: 1
     },
     {
-        
         name: 'HIIT',
         tag: 'hiit',
         price: 10,
         inCart: 0,
-        image_path: '/images/landing/program-hiit.jpg'
+        image_path: '/images/landing/program-hiit.jpg',
+        id: 2
     }
 ];
-
-
 
 // lists
     let itemsLS // <-- get from Local Storage
@@ -35,7 +34,7 @@ let items = [ // our programs
     let quantityLS //    
 
 
-function cartQuantityUp(item, action) { // increments 'inCart' Object field in localStorage
+function cartQuantityUp(item) { // increments 'inCart' Object field in localStorage
     // get current 'CartQuantity' (False if none); parse Int
     let cartQuantityLS = parseInt(localStorage.getItem('cartQuantity')); 
     if(cartQuantityLS) { // if there True
@@ -67,12 +66,11 @@ function setItems(item){ // updates LocalStorage var 'itemsInCart'
     cartItemsLS = JSON.parse(cartItemsLS); // parse to js object
     if (cartItemsLS != null) { // if cart exists
         if (cartItemsLS[item.tag] == undefined) { // if NEW item
-            cartItemsLS = {  
+            cartItemsLS = { 
                 ...cartItemsLS, // append to existing items (rest operator)
                 [item.tag]: item // ... this new item
             }
         }
-        
         cartItemsLS[item.tag].inCart += 1; // increase item's count
     } else { // create the cart
         item.inCart = 1; // with this item in it
@@ -80,12 +78,9 @@ function setItems(item){ // updates LocalStorage var 'itemsInCart'
             [item.tag]: item // 
         }
     }
-   
     // update ItemsInCart into LocalStorage as JSON
     localStorage.setItem("itemsInCart", JSON.stringify(cartItemsLS));
 }
-
-
 function decreaseItem(item){ // get from LS; reduces inCart value in LS 
     let cartItemsLS = localStorage.getItem('itemsInCart'); // first, check what's there
     cartItemsLS = JSON.parse(cartItemsLS); // parse to js object
@@ -105,47 +100,14 @@ function removeItem(item){
         cartItemsLS[item.tag].inCart = 0; // item's "inCart" value increment
     } 
     localStorage.setItem("itemsInCart", JSON.stringify(cartItemsLS));
-
-
 }
-// compute
-function totalCost(item,action) {
-    
-    // let cartCostLS = localStorage.getItem('totalCost');
-    
-    // if (action == 'increment') {
-        
-    //     if (cartCostLS != null) {
-              
-    //         cartCostLS = parseFloat(cartCostLS);
-    //         localStorage.setItem('totalCost', cartCostLS + item.price)
-            
-    //     } 
-    // }   
-    // else if (action == 'decrement') {
-    //         localStorage.setItem('totalCost', cartCostLS - item.price)
-    // }   
-    // else if (action == 'remove') {
-    //     let cartItemsLS = localStorage.getItem('itemsInCart');
-    //     let newTotal = 0; // Compute; Into TotalCost -> itemsInCart
-    //     Object.values(cartItemsLS).filter(itemLS => {
-                
-    //         //if (itemLS.tag = item) { // item = 'array'; itemLS = 'object'
-    //             newTotal += itemLS.price * itemLS.inCart
-    //         //}
-    //     localStorage.setItem('totalCost', newTotal)
-            
-    //     });
-    // }
-    
-}
-/// Event Listeners
+/// ADD TO CART (RECOMMNEDED Section) - Event Listener
 let carts = document.querySelectorAll('.add-cart') 
 for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cartQuantityUp(items[i]);
-        totalCost(items[i],'increment');
-        displayCart()
+        // totalCost(items[i],'increment');
+        displayCart() // this function computes total
     });
 } 
 function displayNavBar(){ // refresh NavBar icon 
@@ -164,7 +126,7 @@ function displayCart() { // refresh HTML
     // get the ItemsInCart object - convert to JS
     let cartItemsLS = localStorage.getItem("itemsInCart");
     cartItemsLS = JSON.parse(cartItemsLS);
-      
+
 
     // if cart is empty -- display links to Programs/Instructors
     if (cartItemsLS == null || parseInt(quantity) <= 0) {
@@ -174,14 +136,14 @@ function displayCart() { // refresh HTML
                 <h4 class="cart-h4">The cart is empty, but fear not! Your journey is a click away...</h4>
                 <div class="cart-empty__buttons">
                     <div class = "cart-empty__button-programs">
-                        <button id="empty-cart-to-programs" class="empty-cart-button" type="button">
+                        <a href="program.html"><button id="empty-cart-to-programs" class="empty-cart-button" type="button">
                             See Our Programs
-                        </button>
+                        </button></a>
                     </div>
                     <div class = "cart-empty__button-team">
-                        <button id="empty-cart-to-team" class="empty-cart-button" type="button">
+                        <a href="MeetOurTeam.html"><button id="empty-cart-to-team" class="empty-cart-button" type="button">
                             Meet Instructors
-                        </button>
+                        </button></a>
                     </div>
                 </div>
             </div>
@@ -192,12 +154,10 @@ function displayCart() { // refresh HTML
     // if cart NOT empty - display cart items 
     if (cartItemsLS && itemContainer ) {
         itemContainer.innerHTML = ''
-        let dynamicHTML;
+        
         // Object.values() returns an array // "=>" Arrow function expression
         Object.values(cartItemsLS).filter(item => { 
-            console.log(item)
-            console.log(item.inCart);
-
+                        
             quantity += item.inCart
             localStorage.setItem('cartQuantity', quantity)
 
@@ -226,17 +186,17 @@ function displayCart() { // refresh HTML
                             <!--  -->
                     <div class="cart-item__functions">
                         <div class="cart-item__remove">
-                            <button class="cart-item__remove-button" type="button"><i class="far fa-trash-alt"></i> Remove</button>
+                            <button id="cart-item-remove-${item.tag}" class="cart-item__remove-button" type="button"><i class="far fa-trash-alt"></i> Remove</button>
                             <!-- ITEM TOTAL (QTY X PRICE) -->
                         </div>
                         <span class="cart-item__item-total">$${item.inCart * item.price}</span>
                         <!-- QTY -->
                         <div class="cart-item__amount">
                             <!-- ITEM QUANTITY -->
-                            <div class="cart-item__quantity">
-                                <a class="qty-increment"><i class="fas fa-arrow-circle-up"></i></a>    
+                            <div class="cart-item__quantity"> 
+                                <a id="qty-increment-${item.tag}" class="arrow"><i class="fas fa-arrow-circle-up"></i></a>    
                                 <label class="cart-item__quantity__value">${item.inCart}</label>
-                                <a class="qty-decrement"><i class="fas fa-arrow-circle-down"></i></a>
+                                <a id="qty-decrement-${item.tag}" class="arrow"><i class="fas fa-arrow-circle-down"></i></a>
                             </div>
                             <i class="fas fa-times fa-sm"></i>
                             <!-- ITEM PRICE -->
@@ -246,9 +206,30 @@ function displayCart() { // refresh HTML
                     </div>
                 </div>
                 `
+                // "Event Delegation" - Adds Quantity, but Loops Too Many Times (adding extra event listeners??)
+                // ---- UP ARROWS (QTY +1; New Total; Refresh Cart)
+                $(document).off('click', '#qty-increment-'+item.tag); // first, remove previously added event listener       
+                $(document).on('click', '#qty-increment-'+item.tag, function() { // then, add it again
+                    cartQuantityUp(item);
+                    displayCart() // REFRESH HTML (after Compute Total)
+                });
+                // ---- DOWN ARROW (QTY -1; New Total; Refresh Cart)
+                $(document).off('click', '#qty-decrement-'+item.tag); // first, remove previously added event listener       
+                $(document).on('click', '#qty-decrement-'+item.tag, function() { // then, add it again
+                    if(cartItemsLS[item.tag].inCart > 1){
+                        cartQuantityDown(item); // -1 QUANTITY
+                        // totalCost(item,'decrement'); // COMPUTE TOTAL
+                        displayCart() // REFRESH HTML (after Compute Total)
+                    }   
+                });
+                // ---- REMOVE BUTTON (QTY -<inCart>; New Total; Refresh Cart)
+                $(document).off('click', '#cart-item-remove-'+item.tag);
+                $(document).on('click', '#cart-item-remove-'+item.tag, function(){
+                    removeItem(item); // -X QUANTITY
+                    displayCart(); // REFRESH HTML (after Compute Total)
+                });
             }
         });
-       
         
         if (cartItemsLS && quantity > 0) {
             itemContainer.innerHTML += `
@@ -270,39 +251,6 @@ function displayCart() { // refresh HTML
             </section>
             `
         }
-    }
-    // EVENT LISTENER - Arrow UP / INCREASE QTY
-    let arrowsUp = document.querySelectorAll('.qty-increment');
-   
-    for (let i = 0; i < arrowsUp.length; i++) {
-    arrowsUp[i].addEventListener('click', () => {
-        cartQuantityUp(items[i]);
-        totalCost(items[i],'increment');
-        displayCart()
-    });
-    }
-    // EVENT LISTENER - Arrow DOWN / DECREASE QTY
-    let arrowsDown = document.querySelectorAll('.qty-decrement');
-    for (let i = 0; i < arrowsDown.length; i++) {
-    arrowsDown[i].addEventListener('click', () => {        
-        let itemsInCartNow = localStorage.getItem('itemsInCart');
-        let item = items[i]
-        itemsInCartNow = JSON.parse(itemsInCartNow)
-        if(itemsInCartNow[item.tag].inCart > 1){
-            cartQuantityDown(items[i]); // -1 QUANTITY
-            totalCost(items[i],'decrement'); // COMPUTE TOTAL
-            displayCart() // REFRESH HTML
-           
-        }   
-    });
-    }
-    let removeHTMLElements = document.querySelectorAll('.cart-item__remove-button');
-    for (let i = 0; i < removeHTMLElements.length; i++) {
-        removeHTMLElements[i].addEventListener('click', () => {
-        removeItem(items[i]); // -X QUANTITY
-        totalCost(items[i],'remove'); // COMPUTE TOTAL
-        displayCart(); // REFRESH HTML
-    });
     }
 
     $(document).ready(function() {
@@ -349,18 +297,9 @@ function displayCart() { // refresh HTML
                 `
                 });
             }
-
-            
-
-            // add display of Order total. 
-            // (bonus) display list of items
-
         });
-    
-        // when clicking "Complete Order", 
-        // --- display Thank You message
-        // --- clear the Internal Storage
-        // --- refresh display (so Cart disappears)
+        // at click: "Complete Order", 
+        // --- display Thank You; clear LoclStorage; refresh display (so Cart disappears) 
         $('.checkout__confirm').click(function(){
             $('.checkout__confirm').toggle();
             $('.checkout__complete').toggle();
@@ -374,18 +313,8 @@ function displayCart() { // refresh HTML
                 'fast');
             });
         });
-
-        // ensure that clicking 'Add To Cart' keeps the Thank You section toggledOff
-        // $('.add-cart').click(function(){
-        //     if (log($('.checkout-complete').is(':visible'))) {
-        //         $('.checkout-complete').toggle();
-        //     };
-
-        // });
     });
 }
-
-
 
 // maintain scroll position at refresh
 // $(window).scroll(function () {
@@ -406,4 +335,18 @@ $(".checkout__complete").toggle();
 displayNavBar();
 displayCart();
 
+// Sticky Navbar - ScrollMagic plugin
+function splitScroll(){
+    const controller = new ScrollMagic.Controller();
+    
+    var pinImages = new ScrollMagic.Scene({
+        triggerElement: '.stick',
+        triggerHook: 0,
+        duration: '13000px'
+    })
+    .setPin('.stick', {pushFollowers: false})
+    // .addIndicators()
+    .addTo(controller);
+}   
 
+splitScroll();

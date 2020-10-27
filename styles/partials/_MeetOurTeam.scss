@@ -1,7 +1,33 @@
+/*
 .team {
   margin-top: -100px;
 }
+*/
+.team_jumbotron {
+ // margin-top: -100px;
+  background-image: url(../images/team1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  h1,
+  p {
+    color: white;
+  }
+  @include mobile {
+    height: 80vh;
+  }
 
+  @include tablet {
+    height: 120vh;
+  }
+  @include desktop {
+    height: 150vh;
+  }
+}
+
+
+
+/*
 .team_banner {
   position: relative;
   background-image: url(../images/team1.jpg);
@@ -19,27 +45,38 @@
     height: 150vh;
   }
 }
-
+*/
 .team-cover {
   position: absolute;
-  height: 100%;
+ // height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
+  @include mobile {
+    height: 80vh;
+  }
+
+  @include tablet {
+    height: 120vh;
+  }
+  @include desktop {
+    height: 150vh;
+  }
 }
 
 .team_content {
   //float: none;
   //margin: auto;
   position: absolute;
+  text-align: center;
   // justify-content: center;
-  // align-items: center;
+   align-items: center;
 
   /*top:30%;
     left:30%;
     transform: translate(-50%, -50%)*/
 
-  margin: 100px;
+  //margin: 100px;
 
   .btn-outline-light {
     padding: 20px;
@@ -71,6 +108,7 @@
   }
 }
 .team_title {
+  
   @include mobile {
     font-size: 1.5rem;
   }

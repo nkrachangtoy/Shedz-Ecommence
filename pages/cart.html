@@ -8,7 +8,7 @@
     <title>SHREDZ:Cart</title>
 </head>
 <body>
-    <header>
+    <header class="stick">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top"> <!-- -->
           
           <!-- Logo = Link to Home -->
@@ -58,7 +58,7 @@
 
         <!-- RECOMMENDED FOR YOU -->
         <h2 class="cart-h2">Recommended For You</h2>
-        <div class="item_container recommended">
+        <div class="recommended item_container">
           <div class="recommended__card" id="recommended1">
             <!-- <img src="../images/landing/program-muaythai.jpg" alt="muay_thai" width="60px"> -->
             <h4 class="recommended__title">Muay Thai</h4>
@@ -191,7 +191,7 @@
           <section class="checkout__confirm">
               <h2 class="cart-h2">Confirm Your Order</h2>      
               <div class="checkout-confirm__item">
-                  <div id="checkout-confirm__items-in-cart"></div>
+                  <div id="checkout-confirm__items-in-cart"></div> <!-- targeting this div in cart.js to display Checkout confirm items-->
                   <label class="checkout-confirm__subtotal">Subtotal: $<span class="confirm_subtotal"></span> </label>
                   <button class="checkout-confirm__button" id="complete" type="button">Complete</button>
                 </div>
@@ -218,11 +218,11 @@
 
         <div class="footer__block text-center">
           <div class="footer__nav">
-            <p><a href="index.html">Home</a></p>
-            <p><a href="./pages/program.html">Program</a></p>
-            <p><a href="./pages/MeetOurTeam.html">Our Team</a></p>
-            <p><a href="./pages/schedule.html">Book Session</a></p>
-            <p><a href="./pages/contact.html">Contact</a></p>
+            <p><a href="../index.html">Home</a></p>
+            <p><a href="program.html">Program</a></p>
+            <p><a href="MeetOurTeam.html">Our Team</a></p>
+            <p><a href="schedule.html">Book Session</a></p>
+            <p><a href="contact.html">Contact</a></p>
           </div>
         </div>
 
@@ -242,6 +242,9 @@
 
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/001a8c6911.js" crossorigin="anonymous"></script>
+    <!-- ScrollMagic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" integrity="sha512-HzAEuXwhLxwm/Jj+5ecdjzrRVrjuh2ZeIxyT1Ln37TO5pWNMnKBuU7cfd1wvRQ/k86w1oC174Yk1T7aRlBpIcA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js" integrity="sha512-Ey+nIg+Ue8gUAaCNjR1KHR8nwDjWn9QXoQbynR/X+V66s6u1oqynnuRQ8zSgg5f5gBNb2Bzsu1pItCi3sPkbfA==" crossorigin="anonymous"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

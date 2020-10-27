@@ -1,3 +1,6 @@
+.stick{
+    z-index: 99;
+}
 
 .cart-main{
     width: 100%;
@@ -18,7 +21,14 @@
 }
 .recommended{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    @media (min-width: $mobile-width) {
+        flex-direction: row;
+
+    }
 
     #recommended1{
         background-image: url(../images/landing/program-muaythai.jpg)
@@ -131,7 +141,7 @@
         justify-content: space-between;
         min-width: 310px;
         // max-width: 100%;
-        padding-top: 10px;
+        // padding-top: 10px;
         padding-bottom: 10px;
         border: 0.2px solid grey;
         border-radius: 2%;
@@ -173,10 +183,13 @@
         &__amount{
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            vertical-align: middle;
-            width: 72%;
+            justify-content: center;
+            width: 100%;
             
+            .fa-times{
+                margin-left: 7%;
+                margin-right: 7%;
+            }
         }
         &__remove-button{
             font-size: 12px;
@@ -199,13 +212,13 @@
                 -ms-transition: color 0.35s linear;
                 transition: color 0.35s linear;
             }
+            i{
+                padding-left: 10%;
+            }
             &:hover .far{
                 color: red;
                 font-size: 16px;
                 transition-duration: 0.35s;
-            }
-            i{
-                padding-left: 10%;
             }
         }
         &__functions{
@@ -214,8 +227,8 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-end;
-            // padding: 4px;
             width: 100%;
+            
 
             @media (min-width: $mobile-width){
                 width: 90%;
@@ -236,6 +249,7 @@
             color: $arrows-color;
             border-radius: 100%;
             box-shadow: 2px 2px 2px $dark-grey;
+            cursor: pointer;
         }
         a:hover .fas{
             color: $yellow;
@@ -250,6 +264,7 @@
             font-weight: bold;
             justify-self: right;
             color: $subtotal;
+            padding: 15px;
             position: absolute;
             offset: 50px;
         }
@@ -321,19 +336,6 @@
         background-image: url(/images/cart/checkout-validate-panel.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        
-        
-        // background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 240px, rgba(255, 255, 255, 1) 290px), url(/images/cart/checkout-validate-panel.jpg) no-repeat;
-         
-        // background-image: url();
-        
-        // background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(130,91,0,1) 100%);   /* FF3.6+ */
-        // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(130,91,0,1))); /* Chrome,Safari4+ */
-        // background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(130,91,0,1) 100%); /* Chrome10+,Safari5.1+ */
-        // background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(130,91,0,1) 100%); /* Opera 11.10+ */
-        // background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(130,91,0,1) 100%); /* IE10+ */
-        // background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(130,91,0,1) 100%); /* W3C */
-        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#825b00',GradientType=0 ); /* IE6-9 */
 
         label{
             color: white;
