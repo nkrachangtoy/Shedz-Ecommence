@@ -1,35 +1,3 @@
-// events = {
-//   yoga: [
-//     {
-//       title: "Hot yoga",
-//       start: "2020-10-24T12:30:00",
-//     },
-//     {
-//       title: "Yoga 1",
-//       start: "2020-10-28T12:30:00",
-//     },
-//     {
-//       title: "Yoga 2",
-//       start: "2020-10-25T12:30:00",
-//     },
-//     {
-//       title: "Yoga 3",
-//       start: "2020-10-26T12:30:00",
-//     },
-//   ],
-//   muaythai: [
-//     {
-//       title: "Beginner Muay Thai ",
-//       start: "2020-10-24T16:30:00",
-//     },
-//   ],
-//   jujitsu: [
-//     {
-//       title: "Advanced Ju Jitsu",
-//       start: "2020-10-24",
-//     },
-//   ],
-// };
 
 document.addEventListener("DOMContentLoaded", () => {
   var calendarEl = document.getElementById("calendar");
@@ -37,20 +5,69 @@ document.addEventListener("DOMContentLoaded", () => {
     events: [ // put the array in the `events` property
     {
       title  : 'Hot yoga',
-      start  : '2020-10-20T12:30:00Z',
+      daysOfWeek: [ '4' ],
+      startTime: '10:45:00',
+      endTime: '12:45:00',
+    },
+    {
+      title: "HIIT",
+      daysOfWeek: [ '2' ],
+      startTime: '13:00:00',
+      endTime: '14:45:00',
+    },
+    {
+      title: "HIIT",
+      daysOfWeek: [ '3' ],
+      startTime: '10:45:00',
+      endTime: '12:45:00',
     },
     {
       title  : 'Muay Thai',
-      start  : '2020-10-18T12:30:00Z',
-      end    : '2020-10-18T15:30:00Z'
+      daysOfWeek: [ '4' ],
+      startTime: '13:00:00',
+      endTime: '14:45:00',
     },
     {
-      title  : 'Conditioning',
-      start  : '2020-10-19T12:30:00Z',
+      title  : 'Muay Thai',
+      daysOfWeek: [ '2' ],
+      startTime: '10:45:00',
+      endTime: '12:45:00',
     },
     {
-      title: "Advanced Ju Jitsu",
-      start: "2020-10-23T12:30:00Z",
+      title  : 'Muay Thai',
+      daysOfWeek: [ '1' ],
+      startTime: '13:00:00',
+      endTime: '14:45:00',
+    },
+    {
+      title: "HIIT",
+      daysOfWeek: [ '1' ],
+      startTime: '10:45:00',
+      endTime: '12:45:00',
+    },
+    {
+      title: "Ju Jitsu",
+      daysOfWeek: [ '5' ],
+      startTime: '10:45:00',
+      endTime: '12:45:00',
+    },
+    {
+      title: "Ju Jitsu",
+      daysOfWeek: [ '1' ],
+      startTime: '08:45:00',
+      endTime: '10:30:00',
+    },
+    {
+      title: "Zumba",
+      daysOfWeek: [ '3' ],
+      startTime: '08:45:00',
+      endTime: '10:30:00',
+    },
+    {
+      title: "Zumba",
+      daysOfWeek: [ '5' ],
+      startTime: '08:45:00',
+      endTime: '10:30:00',
     }
   
   ],
@@ -69,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nowIndicator: true,
     businessHours: {
   // days of week. an array of zero-based day of week integers (0=Sunday)
-  daysOfWeek: [ 0,1, 2, 3, 4, 5, 6 ], // Monday - Thursday
+  daysOfWeek: [ 0,1, 2, 3, 4, 5, 6 ], 
 
   startTime: '8:00', // a start time (10am in this example)
   endTime: '21:00', // an end time (6pm in this example)
@@ -81,12 +98,12 @@ eventClick: (event, jsEvent, view) => {
 
     // Format date
 
-   const eventStart = event.event.startStr;
-   const eventEnd = event.event.endStr;
+   const eventStart = event.event.start;
+   const eventEnd = event.event.end;
   
 $('.modal').modal('show');
 $('.modal-title').html(eventTitle);
-$('.modal-body').html("Start: " + eventStart )
+$('.modal-body').html("Start: " + eventStart + " End: " + eventEnd );
 },
   
    
