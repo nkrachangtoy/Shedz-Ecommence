@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
       startTime: '08:45:00',
       endTime: '10:30:00',
     }
-  
   ],
+    
     slotMinTime: "06:00",
     slotMaxTime: "22:00",
     allDaySlot: false,
@@ -110,4 +110,5 @@ $('.modal-body').html("Start: " + eventStart + " End: " + eventEnd );
   });
   calendar.render();
 });
+console.log(events);
 

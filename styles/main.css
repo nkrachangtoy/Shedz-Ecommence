@@ -156,6 +156,8 @@ table {
 }
 
 .calendar {
+  margin: 0 auto;
+  width: 80%;
   padding: 2rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -174,11 +176,23 @@ table {
   width: 100%;
 }
 
+.calendar__sidebar {
+  margin-bottom: 1rem;
+}
+
 .calendar__text--title {
   margin-bottom: 1rem;
   font-family: "Roboto-Bold";
-  font-size: 32px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@media (min-width: 768px) {
+  .calendar__text--title {
+    font-family: "Roboto-Bold";
+    font-size: 32px;
+    line-height: 32px;
+  }
 }
 
 .calendar__text--subtitle {
